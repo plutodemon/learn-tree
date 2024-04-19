@@ -1,5 +1,4 @@
 import random
-import sys
 
 a = b = 1
 c, d = 2, 3
@@ -88,10 +87,13 @@ it = iter(listD)  # 创建迭代器对象
 for x in it:
     print(x, end=" ")
 # 或者
-while True:
-    try:
-        print(next(it))
-    except StopIteration:
-        sys.exit()
+# while True:
+#     try:
+#         print(next(it))
+#     except StopIteration:
+#         sys.exit()
 
 # 生成器  https://www.runoob.com/python3/python3-iterator-generator.html
+
+匿名函数 = lambda: "Hello, world!"
+print(匿名函数())  # 输出: Hello, world!
