@@ -31,27 +31,27 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return head
 }
 
-func AddTwoNumbers1(l1 *ListNode, l2 *ListNode) *ListNode {
-	carry := 0
-	head := l1
-	for {
-		l1.Val += l2.Val + carry
-		carry = l1.Val / 10
-		l1.Val %= 10
-		if l1.Next == nil && l2.Next == nil {
-			if carry > 0 {
-				l1.Next = &ListNode{Val: carry}
-			}
-			break
-		}
-		l1 = l1.Next
-		if l1 == nil && l2.Next != nil {
-			l1 = &ListNode{}
-		}
-		l2 = l2.Next
-		if l2 == nil {
-			l2 = &ListNode{}
-		}
-	}
-	return head
-}
+//func AddTwoNumbers1(l1 *ListNode, l2 *ListNode) *ListNode {
+//	carry := 0
+//	head := l1
+//	for {
+//		l1.Val += l2.Val + carry
+//		carry = l1.Val / 10
+//		l1.Val %= 10
+//		if l1.Next == nil && l2.Next == nil {
+//			if carry > 0 {
+//				l1.Next = &ListNode{Val: carry}
+//			}
+//			break
+//		}
+//		l1 = l1.Next
+//		if l1 == nil && l2.Next != nil {
+//			l1 = &ListNode{}
+//		}
+//		l2 = l2.Next
+//		if l2 == nil {
+//			l2 = &ListNode{}
+//		}
+//	}
+//	return head
+//}
