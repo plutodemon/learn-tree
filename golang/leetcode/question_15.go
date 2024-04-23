@@ -133,3 +133,172 @@ func ThreeSumClosest(nums []int, target int) int {
 	}
 	return sum
 }
+
+// question_18
+func fourSum(nums []int, target int) [][]int {
+	sort.Ints(nums)
+	n := len(nums)
+	ret := make([][]int, 0)
+	for i := range nums {
+		if i > n-4 {
+			break
+		}
+		if i < n-4 && nums[i]+nums[i+1]+nums[i+2]+nums[i+3] > target {
+			break
+		}
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		if nums[i]+nums[n-1]+nums[n-2]+nums[n-3] < target {
+			continue
+		}
+		for j := i + 1; j < n; j++ {
+			if j > i+1 && nums[j] == nums[j-1] {
+				continue
+			}
+			if j < n-5 && nums[i]+nums[j]+nums[j+1]+nums[j+2] > target {
+				break
+			}
+			if nums[i]+nums[j]+nums[n-1]+nums[n-2] < target {
+				continue
+			}
+			left, right := j+1, n-1
+			for left < right {
+				sum := nums[i] + nums[j] + nums[left] + nums[right]
+				if sum == target {
+					ret = append(ret, []int{nums[i], nums[j], nums[left], nums[right]})
+					left++
+					for left < right && nums[left] == nums[left-1] {
+						left++
+					}
+					for right--; left < right && nums[right] == nums[right+1]; right-- {
+					}
+					continue
+				}
+				if sum < target {
+					left++
+					continue
+				}
+				right--
+			}
+		}
+	}
+	return ret
+}
+
+// question_611
+func TriangleNumber(nums []int) int {
+	sort.Ints(nums)
+	n := len(nums)
+	count := 0
+	for i := range nums {
+		if i > n-3 {
+			break
+		}
+		if nums[i] == 0 {
+			continue
+		}
+		k := i + 2
+		for j := i + 1; j < n; j++ {
+			for k < n && nums[i]+nums[j] > nums[k] {
+				k++
+			}
+			count += k - j - 1
+		}
+	}
+	return count
+}
+
+func TriangleNumber1(nums []int) int {
+	sort.Ints(nums)
+	count := 0
+	for k := 2; k < len(nums); k++ {
+		c := nums[k]
+		i := 0
+		j := k - 1
+		for i < j {
+			if nums[i]+nums[j] > c {
+				count += j - i
+				j--
+				continue
+			}
+			i++
+		}
+	}
+	return count
+}
+
+// question_11
+func maxArea(height []int) int {
+	area := 0
+	left, right := 0, len(height)-1
+	for left < right {
+		sum := minNum(height[left], height[right]) * (right - left)
+		if sum > area {
+			area = sum
+		}
+		if height[left] < height[right] {
+			left++
+			continue
+		}
+		right--
+	}
+	return area
+}
+
+func minNum(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+// question_42 前后缀分解
+func Trap(height []int) int {
+	n := len(height)
+	preMax, sufMax := make([]int, n), make([]int, n)
+	preMax[0] = height[0]
+	sufMax[n-1] = height[n-1]
+	sum := 0
+	for i := 1; i < n; i++ {
+		if height[i] < preMax[i-1] {
+			preMax[i] = preMax[i-1]
+			continue
+		}
+		preMax[i] = height[i]
+	}
+	for i := n - 2; i >= 0; i-- {
+		if height[i] < sufMax[i+1] {
+			sufMax[i] = sufMax[i+1]
+			continue
+		}
+		sufMax[i] = height[i]
+	}
+	for i := 0; i < n; i++ {
+		sum += minNum(preMax[i], sufMax[i]) - height[i]
+	}
+	return sum
+}
+
+func Trap1(height []int) int {
+	n := len(height)
+	left, right := 0, n-1
+	sum := 0
+	preMax, sufMax := height[0], height[n-1]
+	for left <= right {
+		if preMax < height[left] {
+			preMax = height[left]
+		}
+		if sufMax < height[right] {
+			sufMax = height[right]
+		}
+		if preMax < sufMax {
+			sum += preMax - height[left]
+			left++
+			continue
+		}
+		sum += sufMax - height[right]
+		right--
+	}
+	return sum
+}

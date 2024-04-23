@@ -3,6 +3,6 @@ package main
 import "golang/leetcode"
 
 func main() {
-	a := []int{1, 1, -1}
-	println(leetcode.ThreeSumClosest(a, 2))
+	a := []int{4, 2, 0, 3, 2, 5}
+	println(leetcode.Trap1(a))
 }
