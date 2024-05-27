@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"sort"
+)
+
 // question_34
 func searchRange(nums []int, target int) []int {
 	left, right := 0, len(nums)-1
@@ -45,4 +49,30 @@ func maximumCount(nums []int) int {
 		return small
 	}
 	return large
+}
+
+// question_2300
+func successfulPairs(spells []int, potions []int, success int64) []int {
+	ret := make([]int, 0)
+	pLen := len(potions)
+	sort.Ints(potions)
+
+	for _, spell := range spells {
+		if spell == 0 {
+			ret = append(ret, 0)
+			continue
+		}
+		left := 0
+		right := pLen - 1
+		for left <= right {
+			mid := (left + right) / 2
+			if int64(potions[mid])*int64(spell) >= success {
+				right = mid - 1
+			} else {
+				left = mid + 1
+			}
+		}
+		ret = append(ret, pLen-left)
+	}
+	return ret
 }
