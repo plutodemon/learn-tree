@@ -3,6 +3,6 @@ package main
 import "golang/leetcode"
 
 func main() {
-	a := []int{2, -1, 2}
-	println(leetcode.ShortestSubarray(a, 3))
+	a := []int{1, 7, 9, 2, 5}
+	println(leetcode.CountFairPairs(a, 11, 11))
 }

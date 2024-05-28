@@ -65,7 +65,7 @@ func successfulPairs(spells []int, potions []int, success int64) []int {
 		left := 0
 		right := pLen - 1
 		for left <= right {
-			mid := (left + right) / 2
+			mid := (left + right) >> 1
 			if int64(potions[mid])*int64(spell) >= success {
 				right = mid - 1
 			} else {
@@ -73,6 +73,36 @@ func successfulPairs(spells []int, potions []int, success int64) []int {
 			}
 		}
 		ret = append(ret, pLen-left)
+	}
+	return ret
+}
+
+// question_2563
+func CountFairPairs(nums []int, lower int, upper int) int64 {
+	sort.Ints(nums)
+	nLen := len(nums)
+
+	if nLen == 1 ||
+		nums[0]+nums[1] > upper ||
+		nums[nLen-1]+nums[nLen-2] < lower {
+		return 0
+	}
+
+	left := 0
+	right := nLen - 1
+	ret := int64(0)
+
+	for left <= right {
+		if nums[left]+nums[right] > upper {
+			right--
+			continue
+		}
+		if nums[left]+nums[right] < lower {
+			left++
+			continue
+		}
+		ret++
+
 	}
 	return ret
 }
