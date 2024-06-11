@@ -1,4 +1,7 @@
-console.info('Hello ts')
-console.info('123')
-console.info('321')
-console.info('111')
+function greeter(person: string) {
+    return "Hello, " + person;
+}
+
+let user = "Jane User";
+
+document.body.innerHTML = greeter(user);
