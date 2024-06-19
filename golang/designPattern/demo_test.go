@@ -3,6 +3,7 @@ package designPattern
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 type User struct {
@@ -32,4 +33,21 @@ func TestDemo(t *testing.T) {
 		return a.Age >= b.Age
 	})
 	fmt.Println(users)
+}
+
+func TestDemo1(t *testing.T) {
+	ch := make(chan int)
+
+	go func() {
+		time.Sleep(1 * time.Second)
+		ch <- 1
+	}()
+
+	go func() {
+		for {
+			fmt.Println("a:", <-ch)
+		}
+	}()
+
+	time.Sleep(2 * time.Second)
 }
