@@ -40,3 +40,13 @@ for (let i = 0; i < 5; i++) {
 while (num < 15) {
     console.log(num++);
 }
+
+// 字符串
+
+let str = "Hello World!";
+let str1 = "aaa";
+let str2 = "bbb";
+console.log(str.length, str.charAt(str.length - 1),
+    str1.concat(str2), str.substring(5),
+    str.indexOf("o"), str.lastIndexOf("o"),
+    str.trim());
