@@ -49,4 +49,12 @@ let str2 = "bbb";
 console.log(str.length, str.charAt(str.length - 1),
     str1.concat(str2), str.substring(5),
     str.indexOf("o"), str.lastIndexOf("o"),
-    str.trim());
+    str.trim(), str.trimStart());
+
+let arr = [1, 2, 3, 4, 5];
+for (let num in arr) {
+    console.log(num);
+}
+for (let num of arr) {
+    console.log(num);
+}
