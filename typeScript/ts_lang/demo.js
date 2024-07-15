@@ -58,3 +58,10 @@ for (let num in arr) {
 for (let num of arr) {
     console.log(num);
 }
+
+// 函数
+function add(a, b) {
+    return a + b;
+}
+
+document.write("add: " + add("a", "b") + "<br>");
