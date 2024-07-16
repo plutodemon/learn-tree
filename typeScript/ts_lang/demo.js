@@ -1,5 +1,7 @@
 let num = 10;
 
+const pi = 3.1415926;
+
 let user = {
     name: "Jane User",
     age: 25,
@@ -65,3 +67,40 @@ function add(a, b) {
 }
 
 document.write("add: " + add("a", "b") + "<br>");
+
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(new Date());
+
+// 是整个页面的根节点
+console.log(document)
+// 节点类型 9
+console.log(document.nodeType)
+
+// 读取元素
+let divTag = document.getElementsByTagName("div")[0];
+divTag.innerHTML = "Hello World!";
+
+let divRoot = document.getElementById("root");
+divRoot.innerHTML = "Hello Hello Hello World!";
+
+let nav = document.querySelector(".nav");
+let navs = document.querySelectorAll(".nav");
+
+// 创建元素
+let newDiv = document.createElement("div");
+divRoot.appendChild(newDiv);
+
+// 事件(其中还包含鼠标事件等等)
+let buttonTag = document.getElementById("but");
+buttonTag.onclick = function () {
+    alert("Hello World!");
+};
+buttonTag.addEventListener("click", function () {
+    alert("Hello World!111");
+});
+buttonTag.addEventListener("click", function () {
+    alert("Hello World!222");
+});
