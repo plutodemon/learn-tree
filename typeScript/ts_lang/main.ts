@@ -1,7 +1,10 @@
-function greeter(person: string) {
+function greeter(person: string): string {
+    if (person === "Jane User") {
+        return "Hello, Jane User";
+    }
     return "Hello, " + person;
 }
 
-let user = "Jane User";
+let user = "Jane";
 
-document.body.innerHTML = greeter(user);
+console.log(greeter(user));
