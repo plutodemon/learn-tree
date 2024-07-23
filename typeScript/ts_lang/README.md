@@ -15,3 +15,6 @@
 ## 24.7.18
 - ps: [ts在线编辑器](http://www.typescriptlang.org/play/) 或者本地安装tsc ```npm install -g typescript```
 - [ts教程](https://typescript.p6p.net/typescript-tutorial/basic.html) 
+
+## 24.7.23
+- ps: 开始ts 之后c# 之后就是unity了 这周三天 学完这几个 争取下周可以搞个小模型出来
