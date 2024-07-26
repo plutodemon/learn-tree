@@ -14,3 +14,23 @@ str = un;
 // object
 let userObj;
 userObj = { name: 'a' };
+// 任意属性
+let userObj2;
+userObj2 = { name: 'a', sex: 'man' };
+let userObj3;
+userObj3 = { name: 'a', age: 1 };
+// 函数类型声明
+let fn;
+fn = (a, b) => a + b;
+// 数组 元组 枚举
+let arr = [1, 2, 3];
+let arr2 = [1, 2, 3];
+let arr3 = ['a', 1];
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+let t;
+t = 1;
