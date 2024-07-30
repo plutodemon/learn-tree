@@ -1,0 +1,45 @@
+{
+  "include": [
+    "./ts_lang/**/*"
+  ],
+  "exclude": [
+    "./ts_lang/main.ts"
+  ],
+  "//": " 编译器选项",
+  "compilerOptions": {
+    "//": "指定编译js版本",
+    "target": "es2016",
+    "//": "指定模块系统 es6 commonjs",
+    "module": "es6",
+    "//": "使用的库",
+    "lib": [],
+    "//": "编译后的文件",
+    "outDir": "../dist",
+    "//": "所有的ts代码编译到一个文件, module为system或者cmd时使用",
+    "outFile": "./dist/bundle.js",
+    "//": "是否编译js",
+    "allowJs": false,
+    "//": "是否检查js文件",
+    "checkJs": false,
+    "//": "是否编译注释",
+    "removeComments": true,
+    "//": "不生成编译后的文件",
+    "noEmit": false,
+    "//": "当有错误时不生成编译后的文件",
+    "noEmitOnError": true,
+    "//": "语法检查相关",
+    "//": "严格检查总控制",
+    "strict": true,
+    "//": "编译后的文件是否使用严格模式",
+    "alwaysStrict": true,
+    "//": "不允许隐式的any类型",
+    "noImplicitAny": true,
+    "//": "不允不明确类型的this",
+    "noImplicitThis": true,
+    "//": "严格检查空值",
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}

@@ -1,3 +1,5 @@
 .idea
 
 typeScript/dist
+
+**/node_modules
