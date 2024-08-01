@@ -25,9 +25,19 @@ module.exports = {
                 // test指定的是规则生效的文件
                 test: /\.ts$/,
                 // 要使用的loader
-                use: 'ts-loader',
+                use: [
+                    {
+                        // 指定加载器
+                        loader: 'ts-loader',
+                        options: {
+                            compilerOptions: {
+                                noEmit: false
+                            }
+                        },
+                    }
+                ],
                 // 要排除的文件
-                exclude: /node_modules/
+                exclude: /node_modules/,
             }
         ]
     },
