@@ -4,6 +4,13 @@
 
 - 公司项目需要, 暂定需要用ts写脚本, 写一些机器人, 本项目作为学习ts的一个记录
 
+## 环境搭建
+
+- 本地全局安装tsc ```npm install -g typescript```
+- [ws环境搭建](https://www.cnblogs.com/wfaceboss/p/10043101.html "ws环境搭建")
+- [ts在线编辑器](http://www.typescriptlang.org/play/) 
+- [ts教程](https://typescript.p6p.net/typescript-tutorial/basic.html)
+
 ## 使用webpack打包ts
 
 - 初始化package.json (打包配置文件) `npm init -y`
