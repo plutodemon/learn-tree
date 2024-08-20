@@ -3,3 +3,5 @@
 typeScript/dist
 
 **/node_modules
+
+csharp/obj/
