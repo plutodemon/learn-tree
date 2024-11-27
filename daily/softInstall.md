@@ -11,11 +11,11 @@
 
 ## 系统设置:
 
-- 保存位置: 现在win系统都可以修改默认的保存位置: ```设置-系统-存储-更多存储设置-新内容保存位置``` 修改成其他盘符
+- 保存位置: 现在win系统都可以修改默认的保存位置: `设置-系统-存储-更多存储设置-新内容保存位置` 修改成其他盘符
 - 下载位置: 下载软件时 尽量去官网下载 也不要去microsoft store下载 官网是最新的版本 而且也可以选择适合自己的系统  
-  ```浏览器内设置下载位置: 设置-下载-更多设置-下载位置```
+  `浏览器内设置下载位置: 设置-下载-更多设置-下载位置`
 - 修改AppData位置: 这个文件夹下面的东西会越来越大 有些文件夹可以删 但是有些东西是不能删除的 最好的办法就是修改位置  
-  ```修改注册表教程```[修改AppData位置](https://blog.csdn.net/zsq_csh1/article/details/127484216 "修改AppData位置")
+  `修改注册表教程`[修改AppData位置](https://blog.csdn.net/zsq_csh1/article/details/127484216 "修改AppData位置")
 
 ## 常用软件:
 
@@ -26,19 +26,19 @@
 - Golang: 官网下载解压到某个自定义文件夹中后 配置环境变量等
     - 现在go的版本通过go mod管理依赖 所以不需要再配置GOPATH了  
       但是一些老的项目 或者go install的时候不配置会下载到系统盘 所以还是配置一下吧
-    - 配置GOROOT系统环境变量: 变量名: ```GOROOT``` 变量值: go的安装路径bin目录
-    - 配置GOPATH系统环境变量: 新建文件夹 此文件夹下新建 ```bin pkg src``` 三个文件夹 变量名: ```GOPATH``` 变量值:
+    - 配置GOROOT系统环境变量: 变量名: `GOROOT` 变量值: go的安装路径bin目录
+    - 配置GOPATH系统环境变量: 新建文件夹 此文件夹下新建 `bin pkg src` 三个文件夹 变量名: `GOPATH` 变量值:
       自定义文件夹路径
         - 这样的gopath是全局的 若用gopath的模式 需要在不同项目中 切换不同的gopath(不推荐)
     - go env:
-        - 设置gopath: ```go env -w GOPATH=D:\Golang1.19\gopath```(修改后 GOMODCACHE也会跟着修改)
-        - 开启go mod: ```go env -w GO111MODULE=on```
-        - 设置代理: ```go env -w GOPROXY=https://goproxy.io,direct```
-        - 设置构建缓存: ```go env -w GOCACHE=D:\Golang1.19\gopath\go-build-cache```
-        - 恢复自己设置的go env: 删除 ```C:\Users\%UserName%\AppData\Roaming\go\env```  
-          <br/>
-- Python:
-    - Windows: 官网下载对应版本 ```Use admin privileges 和 Add to PATH``` 都要选择点击安装
+        - 设置gopath: `go env -w GOPATH=D:\Golang1.19\gopath`(修改后 GOMODCACHE也会跟着修改)
+        - 开启go mod: `go env -w GO111MODULE=on`
+        - 设置代理: `go env -w GOPROXY=https://goproxy.io,direct`
+        - 设置构建缓存: `go env -w GOCACHE=D:\Golang1.19\gopath\go-build-cache`
+            - 恢复自己设置的go env: 删除 `C:\Users\%UserName%\AppData\Roaming\go\env`  
+              <br/>
+- Python: (先安装Anaconda)
+    - Windows: 官网下载对应版本 `Use admin privileges 和 Add to PATH` 都要选择点击安装
     - 自定义安装:
         - [ ] Documentation: 安装Python的文档和帮助文件 一般不安装 因为也不看
         - [X] pip: 安装Python包管理工具 一定要安装
@@ -52,12 +52,50 @@
             - [X] Precompile standard library: 预编译标准库 以提高标准库模块的导入速度
             - 路径: 不要带中文
         - 如果前面没有选择添加环境变量: 系统环境变量PATH中添加Python的安装路径
-    - 验证: ```python --version``` ```pip --version``` ```py --version```
-    - pip修改路径:
-        - ```python -m site``` 查看路径  ```pip show 安装包名字``` 查看安装包路径
-        - 在 ```python/lib/site.py ``` 文件中 修改 ```USER_SITE = "D:\ProgramData\Anaconda3\lib\site-packages"```
-          ```USER_BASE = "D:\ProgramData\Anaconda3\Scripts"```  
+    - 验证: `python --version` `pip --version` `py --version`
+        - pip修改路径:
+        - `python -m site` 查看路径  `pip show 安装包名字` 查看安装包路径
+        - 在 `python/lib/site.py ` 文件中 修改
+          `USER_SITE = "D:\ProgramData\Anaconda3\lib\site-packages"`
+          `USER_BASE = "D:\ProgramData\Anaconda3\Scripts"`  
           <br/>
+- Anaconda: 官网下载安装
+    - `I agree` 后 `install for all users`
+    - 创建开始菜单 base环境 清除包缓存 **_均勾选_**
+    - finish时 launch 等两个选项 **_不要选择_**
+    - 配置环境变量: path 中添加
+        - `G:\anaconda`
+        - `G:\anaconda\Scripts`
+        - `G:\anaconda\Library\bin`
+        - `G:\anaconda\Library\mingw-w64\bin`
+        - `G:\anaconda\Library\usr\bin`
+    - 验证: `conda --version` `conda env list`
+    - 配置:
+        - `conda config --set show_channel_urls yes` 设置搜索时显示通道地址
+        - 修改 `~/.condarc` 文件:
+      ``` text
+      envs_dirs:
+        - G:\anaconda_pkg\envs
+      pkgs_dirs:
+        - G:\anaconda_pkg\pkgs
+      show_channel_urls: true
+      channels:
+        - https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+        - https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+        - https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+        - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+        - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+        - https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+        - https://mirrors.aliyun.com/anaconda/pkgs/main/
+        - https://mirrors.aliyun.com/anaconda/pkgs/free/
+        - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+        - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+        - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+        - defaults
+      ```
+    - 验证: `conda info`
+    - 删除镜像源恢复默认: `conda config --remove-key channels`  
+      <br/>
 - Node.js:
     - Windows: 官网下载对应版本LTS
     - 自定义安装: 其实默认安装就可以了 非必要的在线文档等功能也占用不了多少空间 仅1M左右
@@ -65,15 +103,15 @@
         - [X] npm package manager: 安装npm包管理工具
         - [X] Add to PATH: 添加到环境变量
         - ![img.png](img/img.png) 这个不要勾选 会影响安装速度 自己安装 C/C++ & python
-        - 验证: ```node -v``` ```npm -v```
+        - 验证: `node -v` `npm -v`
     - 配置npm包的安装路径:
-        - 查看路径: ```npm config get prefix``` ```npm config get cache```
-        - 手动创建文件夹: ```D:\ProgramData\nodejs\node_global``` ```D:\ProgramData\nodejs\node_cache```
+        - 查看路径: `npm config get prefix` `npm config get cache`
+        - 手动创建文件夹: `D:\ProgramData\nodejs\node_global` `D:\ProgramData\nodejs\node_cache`
         - 修改权限: 两个文件夹可以写入
-        - ```npm config set prefix "D:\ProgramData\nodejs\node_global"```  
-          ```npm config set cache "D:\ProgramData\nodejs\node_cache"```
-        - 修改环境变量: ```C:\Users\lemon\AppData\Roaming\npm``` --> ```D:\ProgramData\nodejs\node_global```
-        - 修改npm源: ```npm config set registry=https://registry.npmmirror.com/```
+        - `npm config set prefix "D:\ProgramData\nodejs\node_global"`  
+          `npm config set cache "D:\ProgramData\nodejs\node_cache"`
+        - 修改环境变量: `C:\Users\lemon\AppData\Roaming\npm` --> `D:\ProgramData\nodejs\node_global`
+        - 修改npm源: `npm config set registry=https://registry.npmmirror.com/`
         - 参考来源: [npm包安装路径1](https://blog.csdn.net/thefg/article/details/132410794 "npm包安装路径")
           [npm包安装路径2](https://blog.csdn.net/Nicolecocol/article/details/136788200 "npm包安装路径")  
           <br/>
