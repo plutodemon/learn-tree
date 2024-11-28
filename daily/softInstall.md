@@ -81,10 +81,10 @@
     - `conda create -n py39 python=3.9` 创建环境
     - `conda activate py39` 激活环境  
       <br/>
-  
+
 - 修改pip下载位置:
-  - `python -m site --user-site` `python -m site` 查看路径
- 
+    - `python -m site --user-site` `python -m site` 查看路径
+
 - 安装pytorch:
     - cpu版本:
         - `pip install torch`
