@@ -5,3 +5,5 @@ typeScript/dist
 **/node_modules
 
 csharp/obj/
+
+csharp/bin/

@@ -78,17 +78,25 @@
 
 - 配置激活环境:
     - `conda init` 初始化
+    - `conda info -e` 查看环境
     - `conda create -n py39 python=3.9` 创建环境
-    - `conda activate py39` 激活环境  
+    - `conda activate py39` 激活环境
+    - `conda remove --name ENV_NAME --all` 删除环境  
       <br/>
 
 - 修改pip下载位置:
-    - `python -m site --user-site` `python -m site` 查看路径
+    - 不要用pip下载 用conda下载
 
-- 安装pytorch:
+- 安装pytorch: 官网自己选择需要的版本
+    - 创建虚拟环境后安装
     - cpu版本:
-        - `pip install torch`
-        - `pip install torchvision`
+        - `conda install pytorch torchvision torchaudio cpuonly -c pytorch`
+    - 验证: `import torch` `x = torch.rand(5, 3)` `print(x)` 输出 tensor 为成功
+    - gpu版本:
+        - 先安装cuda和cudnn
+        - `conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia` 查看对应cuda版本
+          下载torch对应版本
+          <br/>
 
 ### Python:
 
@@ -111,9 +119,10 @@
 - 验证: `python --version` `pip --version` `py --version`
     - pip修改路径:
     - `python -m site` 查看路径  `pip show 安装包名字` 查看安装包路径
-    - 在 `python/lib/site.py ` 文件中 修改
+    - (可能不生效 尤其是再conda环境中) 在 `python/lib/site.py ` 文件中 修改
       `USER_SITE = "G:\anaconda\Lib\site-packages"`
-      `USER_BASE = "G:\anaconda\Scripts"`  
+      `USER_BASE = "G:\anaconda\Scripts"`
+    - (不生效时使用) 配置环境变量: `PYTHONPATH` `PYTHONUSERBASE` `PYTHONUSERBASE`
       <br/>
 
 ### Node.js:
